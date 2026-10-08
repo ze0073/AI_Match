@@ -1,0 +1,1 @@
+import{r as t}from"./request-beD9k9hh.js";const r={getUsers:s=>t.get("/admin/users",{params:s}),updateStatus:(s,a)=>t.put("/admin/users/"+s+"/status",null,{params:{status:a}}),getDashboardStats:()=>t.get("/stats/dashboard")};export{r as a};

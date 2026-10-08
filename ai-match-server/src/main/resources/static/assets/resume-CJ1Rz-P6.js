@@ -1,0 +1,1 @@
+import{r as t}from"./request-beD9k9hh.js";const a={upload:e=>{const r=new FormData;return r.append("file",e),t.post("/jobseeker/resume/upload",r)},getDetail:e=>t.get(`/jobseeker/resume/${e}`),update:(e,r)=>t.put(`/jobseeker/resume/${e}`,r),getCapability:()=>t.get("/jobseeker/resume/my-capability")};export{a as r};

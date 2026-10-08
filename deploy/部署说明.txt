@@ -1,0 +1,37 @@
+=== AI Match 智能人才匹配系统 - 部署说明 ===
+
+【安装包内容】
+  ai-match-server-1.0.0.jar  主程序 (86MB, 内嵌前端静态资源)
+  application.yml             系统配置文件
+  start.sh                    启动脚本 (含防火墙配置)
+
+【唯一运行时依赖】
+  JDK 17+ (龙芯架构需使用龙芯版OpenJDK)
+  安装命令: yum install java-17-openjdk -y
+  验证命令: java -version
+
+【不包含的第三方依赖】
+  本安装包不包含 node_modules、Python site-packages、Maven本地仓库等。
+  前端依赖通过 package.json 声明，构建时 npm install 自动下载。
+  Java依赖通过 pom.xml 声明，构建时 Maven 自动下载并打包进 Fat JAR。
+
+【快速部署步骤】
+  1. 安装JDK: yum install java-17-openjdk -y
+  2. 上传文件: 将整个 deploy 目录上传到服务器任意位置
+  3. 启动服务: chmod +x start.sh && ./start.sh
+  4. 访问系统: http://服务器IP:8080
+  5. 管理员登录: ADMIN / admin123
+
+【停止与重启】
+  停止: pkill -f ai-match-server
+  重启: pkill -f ai-match-server && ./start.sh
+
+【数据备份】
+  所有数据存储在 data/ 目录，直接复制备份即可:
+  cp -r data/ data_backup/
+
+【注意事项】
+  - 启动脚本会自动配置防火墙开放8080端口
+  - 若sudo需要密码，首次运行会弹出密码提示
+  - 若启动失败，查看日志: cat logs/app.log
+  - AI功能需要服务器能访问外网 (DeepSeek API)

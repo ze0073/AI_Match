@@ -1,0 +1,63 @@
+/* Dark override - loaded AFTER element-plus to win specificity */
+.el-input__wrapper { background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.08) !important; box-shadow: none !important; }
+.el-input__inner { background: transparent !important; color: #e0e0e0 !important; -webkit-text-fill-color: #e0e0e0 !important; }
+.el-input__inner::placeholder { color: #6a6a7a !important; }
+.el-select .el-input__wrapper { background: rgba(255,255,255,0.06) !important; }
+.el-select-dropdown { background: #1e1e32 !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+.el-select-dropdown__item { color: #c0c0cc !important; }
+.el-select-dropdown__item.hover, .el-select-dropdown__item:hover { background: rgba(255,255,255,0.06) !important; }
+.el-select-dropdown__item.selected { color: #93c5fd !important; }
+.el-descriptions__label { background: rgba(255,255,255,0.04) !important; color: #b0b0c0 !important; border-color: rgba(255,255,255,0.06) !important; }
+.el-descriptions__content { background: rgba(255,255,255,0.025) !important; color: #e0e0e0 !important; border-color: rgba(255,255,255,0.06) !important; }
+.el-descriptions__body, .el-descriptions__table { background: transparent !important; }
+.el-form-item__label { color: #b0b0c0 !important; }
+.el-input-number .el-input__wrapper { background: rgba(255,255,255,0.06) !important; }
+.el-input-number__decrease, .el-input-number__increase { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.08) !important; color: #b0b0c0 !important; }
+.el-tag { background: rgba(96,165,250,0.12) !important; border-color: rgba(96,165,250,0.20) !important; color: #93c5fd !important; }
+.el-tag--success { background: rgba(103,194,58,0.12) !important; border-color: rgba(103,194,58,0.20) !important; color: #86e076 !important; }
+.el-tag--warning { background: rgba(230,162,60,0.12) !important; border-color: rgba(230,162,60,0.20) !important; color: #f0c878 !important; }
+.el-tag--danger { background: rgba(245,108,108,0.12) !important; border-color: rgba(245,108,108,0.20) !important; color: #f49090 !important; }
+.el-table { background: transparent !important; color: #e0e0e0 !important; --el-table-tr-bg-color: transparent; --el-table-header-bg-color: rgba(255,255,255,0.03); --el-table-row-hover-bg-color: rgba(96,165,250,0.06); }
+.el-table th.el-table__cell { background: rgba(255,255,255,0.03) !important; color: #b0b0c0 !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+.el-table td.el-table__cell { background: transparent !important; color: #e0e0e0 !important; border-bottom: 1px solid rgba(255,255,255,0.04) !important; }
+.el-table--striped .el-table__body tr.el-table__row--striped td { background: rgba(255,255,255,0.02) !important; }
+.el-table__body tr:hover > td { background: rgba(96,165,250,0.06) !important; }
+.el-card { background: rgba(255,255,255,0.05) !important; border: 1px solid rgba(255,255,255,0.08) !important; color: #e0e0e0 !important; }
+.el-card__header { border-bottom: 1px solid rgba(255,255,255,0.06) !important; color: #e0e0e0 !important; }
+.el-pagination .btn-prev, .el-pagination .btn-next { background: rgba(255,255,255,0.04) !important; color: #b0b0c0 !important; }
+.el-pagination button { color: #b0b0c0 !important; }
+.el-radio-button__inner { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; color: #b0b0c0 !important; }
+.el-radio-button__original-radio:checked + .el-radio-button__inner { background: rgba(96,165,250,0.20) !important; color: #93c5fd !important; }
+.el-progress-bar__outer { background: rgba(255,255,255,0.06) !important; }
+.el-dialog { background: #1e1e32 !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+.el-dialog__header { border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+.el-dialog__title { color: #e0e0e0 !important; }
+.el-upload-dragger { background: rgba(255,255,255,0.03) !important; border: 1px dashed rgba(255,255,255,0.10) !important; }
+.el-upload-dragger .el-upload__text { color: #b0b0c0 !important; }
+/* --- Autofill override (Chrome forces white bg on password fields) --- */
+.el-input__inner:-webkit-autofill,
+.el-input__inner:-webkit-autofill:hover,
+.el-input__inner:-webkit-autofill:focus,
+.el-input__inner:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #1e1e32 inset !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+  caret-color: #e0e0e0 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* --- Password show/hide toggle area --- */
+.el-input__suffix { background: transparent !important; }
+.el-input__suffix-inner { color: #6a6a7a !important; }
+
+/* --- Select trigger (the clickable part) --- */
+.el-select .el-select__wrapper { background: rgba(255,255,255,0.06) !important; }
+.el-select .el-input.is-focus .el-input__wrapper { background: rgba(255,255,255,0.10) !important; }
+
+/* --- Tabs in dark theme --- */
+.el-tabs__header { border-bottom-color: rgba(255,255,255,0.06) !important; }
+.el-tabs__item { color: #9090a0 !important; }
+.el-tabs__item.is-active { color: #93c5fd !important; }
+.el-tabs__active-bar { background: #93c5fd !important; }
+
+/* --- Filter form labels --- */
+.filter-form .el-form-item__label { color: #b0b0c0 !important; }

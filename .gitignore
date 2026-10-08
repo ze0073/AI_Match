@@ -1,0 +1,40 @@
+# Dependencies and build artifacts
+node_modules/
+dist/
+target/
+.m2-repo/
+libs/
+*.jar
+*.class
+*.zip
+
+# Local runtime data and logs
+data/
+logs/
+uploads/
+*.log
+*.log.*
+*.mv.db
+*.trace.db
+
+# Local configuration and credentials (sanitized examples are tracked)
+.env
+.env.*
+!.env.example
+application.yml
+application.yaml
+application-local.*
+ai-match-server/start.bat
+ai-match-server/settings.xml
+*.pem
+*.key
+
+# Editors, operating system and generated deliverables
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+/outputs/
+
+# Competition documents and recordings may contain personal information
+/docs/

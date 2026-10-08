@@ -1,0 +1,1 @@
+import{r as s}from"./request-beD9k9hh.js";const e={login:t=>s.post("/auth/login",t),register:t=>s.post("/auth/register",t),getUserInfo:()=>s.get("/auth/userinfo"),updatePassword:(t,r)=>s.put("/auth/password",null,{params:{oldPassword:t,newPassword:r}})};export{e as a};

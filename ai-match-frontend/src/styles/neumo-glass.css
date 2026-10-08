@@ -1,0 +1,485 @@
+/* =====================================================
+   Pure Glassmorphism - AI Match (Dark Mode)
+   WCAG AA+ text contrast on dark backgrounds
+   ===================================================== */
+
+:root {
+  /* Background - dark gradient */
+  --bg-body: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --bg-card-hover: rgba(255, 255, 255, 0.10);
+  --bg-card-active: rgba(255, 255, 255, 0.14);
+  --bg-sidebar: rgba(255, 255, 255, 0.04);
+  --bg-input: rgba(255, 255, 255, 0.07);
+  --bg-input-focus: rgba(255, 255, 255, 0.12);
+
+  /* Glass effects */
+  --glass-blur: blur(16px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.10);
+  --glass-border-light: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 6px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 2px 14px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.50);
+  --shadow-xl: 0 8px 40px rgba(0, 0, 0, 0.60);
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.25);
+
+  /* Border radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-btn: 12px;
+  --radius-input: 10px;
+  --radius-tag: 8px;
+
+  /* Text - near-white for dark backgrounds */
+  --text-primary: #e8e8ed;
+  --text-secondary: #b0b0bc;
+  --text-muted: #808090;
+  --text-placeholder: #6a6a7a;
+
+  /* Accent */
+  --accent-light: rgba(96, 165, 250, 0.12);
+  --accent-hover: rgba(96, 165, 250, 0.20);
+  --accent-text: #93c5fd;
+  --accent-border: rgba(96, 165, 250, 0.30);
+  --accent-color: #3b82f6;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #94a3b8;
+
+  /* Transitions */
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== Global Reset ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Inter', -apple-system, sans-serif;
+  background: var(--bg-body);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app { min-height: 100vh; }
+
+/* ========== Animations ========== */
+@keyframes glassFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.glass-fade-in { animation: glassFadeIn 0.45s ease forwards; }
+
+/* ========== Utility Classes ========== */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+.glass-card:hover {
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-card-hover);
+}
+
+.glass-panel {
+  background: var(--bg-sidebar);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========== Element Plus Overrides ========== */
+
+/* --- Card --- */
+.el-card {
+  background: var(--bg-card) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: var(--transition) !important;
+  color: var(--text-primary) !important;
+}
+.el-card:hover {
+  box-shadow: var(--shadow-lg) !important;
+  background: var(--bg-card-hover) !important;
+}
+.el-card__header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+.el-card__body {
+  color: var(--text-primary) !important;
+}
+
+/* --- Button --- */
+.el-button {
+  background: var(--bg-card) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-btn) !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
+}
+.el-button:hover {
+  background: var(--bg-card-hover) !important;
+  box-shadow: var(--shadow-md) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.el-button:active {
+  background: var(--bg-card-active) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition-fast) !important;
+}
+
+/* --- Primary Button --- */
+.el-button--primary {
+  background: var(--accent-color) !important;
+  border: 1px solid var(--accent-color) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+.el-button--primary:hover {
+  background: #2563eb !important;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.40) !important;
+}
+
+/* --- Success/Warning/Danger --- */
+.el-button--success { background: var(--success) !important; border-color: var(--success) !important; color: #fff !important; }
+.el-button--warning { background: var(--warning) !important; border-color: var(--warning) !important; color: #000 !important; }
+.el-button--danger  { background: var(--danger) !important;  border-color: var(--danger) !important;  color: #fff !important; }
+
+/* --- Input --- */
+.el-input__wrapper {
+  background: var(--bg-input) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border-light) !important;
+  border-radius: var(--radius-input) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition) !important;
+}
+.el-input__wrapper:hover {
+  background: var(--bg-card-hover) !important;
+}
+.el-input.is-focus .el-input__wrapper,
+.el-input__wrapper.is-focus {
+  background: var(--bg-input-focus) !important;
+  box-shadow: var(--focus-ring) !important;
+  border-color: var(--accent-border) !important;
+}
+.el-input__inner {
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+}
+.el-input__inner::placeholder {
+  color: var(--text-placeholder) !important;
+}
+
+/* --- Select --- */
+.el-select-dropdown {
+  background: rgba(30, 30, 50, 0.92) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+.el-select-dropdown__item {
+  color: var(--text-primary) !important;
+}
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  background: rgba(96, 165, 250, 0.10) !important;
+}
+.el-select-dropdown__item.selected {
+  color: var(--accent-text) !important;
+  font-weight: 600;
+}
+
+/* --- Table --- */
+.el-table {
+  --el-table-border-color: rgba(255, 255, 255, 0.06);
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  --el-table-tr-bg-color: transparent !important;
+  --el-table-header-bg-color: rgba(255, 255, 255, 0.03) !important;
+  --el-table-row-hover-bg-color: rgba(96, 165, 250, 0.06) !important;
+  --el-table-current-row-bg-color: rgba(96, 165, 250, 0.08) !important;
+}
+.el-table th.el-table__cell {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+.el-table td.el-table__cell {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  color: var(--text-primary) !important;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* --- Menu (Sidebar) --- */
+.el-menu {
+  background: transparent !important;
+  border-right: none !important;
+}
+.el-menu-item {
+  color: var(--text-secondary) !important;
+  border-radius: 10px !important;
+  margin: 4px 8px !important;
+  transition: var(--transition) !important;
+  font-weight: 500;
+}
+.el-menu-item:hover {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+.el-menu-item.is-active {
+  background: var(--accent-light) !important;
+  color: var(--accent-text) !important;
+  font-weight: 600;
+}
+
+/* --- Dialog --- */
+.el-dialog {
+  background: rgba(24, 24, 44, 0.90) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+.el-dialog__header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: var(--text-primary) !important;
+}
+.el-dialog__body { color: var(--text-primary) !important; }
+.el-dialog__title { color: var(--text-primary) !important; }
+
+/* --- Tag --- */
+.el-tag {
+  background: var(--bg-input) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border-light) !important;
+  border-radius: var(--radius-tag) !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* --- Pagination --- */
+.el-pagination button,
+.el-pager li {
+  background: var(--bg-card) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border-light) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--text-secondary) !important;
+  transition: var(--transition) !important;
+}
+.el-pagination button:hover,
+.el-pager li:hover {
+  background: var(--bg-card-hover) !important;
+  color: var(--text-primary) !important;
+}
+.el-pager li.is-active {
+  background: var(--accent-light) !important;
+  color: var(--accent-text) !important;
+  font-weight: 600;
+  border-color: var(--accent-border) !important;
+}
+
+/* --- Tabs --- */
+.el-tabs__item {
+  color: var(--text-secondary) !important;
+}
+.el-tabs__item.is-active {
+  color: var(--accent-text) !important;
+  font-weight: 600;
+}
+.el-tabs__active-bar {
+  background: var(--accent-color) !important;
+}
+.el-tabs__nav-wrap::after {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* --- Descriptions --- */
+.el-descriptions__label {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+.el-descriptions__content {
+  color: var(--text-primary) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* --- Upload --- */
+.el-upload-dragger {
+  background: var(--bg-input) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 2px dashed rgba(255, 255, 255, 0.10) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition) !important;
+}
+.el-upload-dragger:hover {
+  border-color: var(--accent-border) !important;
+  background: var(--bg-card-hover) !important;
+}
+
+/* --- Progress --- */
+.el-progress-bar__outer {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 10px !important;
+}
+
+/* --- Empty --- */
+.el-empty__description p {
+  color: var(--text-muted) !important;
+}
+
+/* --- Dropdown --- */
+.el-dropdown-menu {
+  background: rgba(30, 30, 50, 0.92) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+.el-dropdown-menu__item {
+  color: var(--text-primary) !important;
+}
+.el-dropdown-menu__item:hover {
+  background: var(--bg-card-hover) !important;
+}
+
+/* --- Message/Notification --- */
+.el-message,
+.el-notification {
+  background: rgba(30, 30, 50, 0.92) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-btn) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* --- Radio Button --- */
+.el-radio-button__inner {
+  background: var(--bg-card) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: var(--glass-border-light) !important;
+  color: var(--text-secondary) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition) !important;
+}
+.el-radio-button__original-radio:checked + .el-radio-button__inner {
+  background: var(--accent-light) !important;
+  color: var(--accent-text) !important;
+  border-color: var(--accent-border) !important;
+  font-weight: 600;
+}
+
+/* --- Input Number --- */
+.el-input-number__decrease,
+.el-input-number__increase {
+  background: var(--bg-input) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* --- Rate --- */
+.el-rate__icon {
+  color: rgba(255, 255, 255, 0.10) !important;
+}
+.el-rate__icon.is-active {
+  color: var(--warning) !important;
+}
+
+/* --- Divider --- */
+.el-divider--vertical {
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* --- Form labels --- */
+.el-form-item__label {
+  color: var(--text-secondary) !important;
+}
+
+/* --- Switch --- */
+.el-switch__label {
+  color: var(--text-secondary) !important;
+}
+.el-switch__label.is-active {
+  color: var(--accent-text) !important;
+}
+
+/* --- Alert --- */
+.el-alert--error {
+  background: rgba(239, 68, 68, 0.10) !important;
+  border: 1px solid rgba(239, 68, 68, 0.20) !important;
+}
+.el-alert__title {
+  color: #fca5a5 !important;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  :root {
+    --radius-md: 14px;
+    --radius-btn: 10px;
+    --radius-input: 8px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --radius-md: 12px;
+    --radius-btn: 8px;
+    --radius-input: 8px;
+  }
+}
+/* =====================================================
+   el-empty dark-theme fix
+   ===================================================== */
+.el-empty__image svg {
+  fill: rgba(255,255,255,0.06) !important;
+}
+.el-empty__image path {
+  stroke: rgba(255,255,255,0.12) !important;
+}
+.el-empty__description p {
+  color: rgba(255,255,255,0.35) !important;
+}
